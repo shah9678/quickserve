@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/bg_login">
 
     <!-- Title -->
     <TextView
@@ -13,7 +14,7 @@
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
     <!-- Task Selection List -->
     <ListView
@@ -32,7 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/taskListView"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/white"
+        android:outlineAmbientShadowColor="@color/white"/>
 
     <!-- Date Picker -->
     <Button
