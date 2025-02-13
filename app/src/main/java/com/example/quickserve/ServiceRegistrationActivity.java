@@ -10,6 +10,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+
+import org.bson.Document;
+
 public class ServiceRegistrationActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -36,6 +42,7 @@ public class ServiceRegistrationActivity extends AppCompatActivity {
         uploadPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText nameField = findViewById(R.id.nameField);
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -43,24 +50,31 @@ public class ServiceRegistrationActivity extends AppCompatActivity {
             }
         });
 
-        // Submit Button Click
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = nameField.getText().toString();
-                String phone = phoneNumberField.getText().toString();
-                String email = emailField.getText().toString();
-                String service = serviceField.getText().toString();
-                String hourlyRate = hourlyRateField.getText().toString();
+                MongoDatabase db = MongoDBHelper.getDatabase();
+                MongoCollection<org.bson.Document> usersCollection = db.getCollection("Users");
 
-                if (name.isEmpty() || phone.isEmpty() || email.isEmpty() || service.isEmpty() || hourlyRate.isEmpty()) {
-                    Toast.makeText(ServiceRegistrationActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ServiceRegistrationActivity.this, "Registration Submitted!", Toast.LENGTH_SHORT).show();
-                    // Implement submission logic (e.g., store in database)
-                }
+                Document newUser = new Document("name", nameField.getText().toString())
+                        .append("phone", phoneNumberField.getText().toString())
+                        .append("email", emailField.getText().toString())
+                        .append("service", serviceField.getText().toString())
+                        .append("hourlyRate", Integer.parseInt(hourlyRateField.getText().toString()));
+
+                usersCollection.insertOne((org.bson.Document) newUser);
+                Toast.makeText(ServiceRegistrationActivity.this, "User Registered!", Toast.LENGTH_SHORT).show();
             }
         });
+        MongoDatabase db = MongoDBHelper.getDatabase();
+        MongoCollection<org.bson.Document> usersCollection = db.getCollection("Users");
+
+        for (org.bson.Document doc : usersCollection.find()) {
+            String name = doc.toString();
+            String phone = doc.toString();
+            System.out.println("User: " + name + " Phone: " + phone);
+        }
+
     }
 
     @Override

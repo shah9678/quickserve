@@ -32,7 +32,8 @@ android {
 }
 
 dependencies {
-
+    //implementation 'org.mongodb:mongodb-driver-sync:4.5.1'
+    implementation("org.mongodb:mongodb-driver-sync:4.5.1")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -40,4 +41,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+
 }

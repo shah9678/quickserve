@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Registration"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Input Fields -->
+        <EditText
+            android:id="@+id/nameField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:background="@android:color/black"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/phoneNumberField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number (with country code)"
+            android:background="@android:color/black"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/emailField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:background="@android:color/black"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/serviceField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Services You Want To Provide"
+            android:background="@android:color/black"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/hourlyRateField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Per Hour Rate in USD"
+            android:background="@android:color/black"
+            android:inputType="number"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Upload Photo Button -->
+        <Button
+            android:id="@+id/uploadPhotoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Photo"
+            android:backgroundTint="@color/white"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Display Uploaded Image -->
+        <ImageView
+            android:id="@+id/uploadedImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:backgroundTint="@color/white"
+            android:textColor="@android:color/black"
+            android:padding="10dp"/>
+    </LinearLayout>
+</ScrollView>
